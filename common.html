@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提交论文</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<script src="./layui/layui.js"></script>
+	<script src="./jquery.js"></script>
+<style>
+    body{
+    	height: 100%;
+    }
+	.submit-container{
+		height: 100%;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.submit-left{
+		width: 130px;
+		height: 100%;
+		background: #343544;
+		text-align: center;
+		padding-top: 50px;
+		box-sizing: border-box;
+	}
+	.submit-left li{
+		height: 50px;
+		line-height: 50px;
+		color: #ffffff;
+		cursor: pointer;
+	}
+	.submit-left li a{
+		color: #ffffff;
+	}
+	.submit-left li.active{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-left li.active a{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-right{
+	  width: 1000px;
+	  padding-top: 50px;
+	  padding-left: 30px;
+	}
+	#content{
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		margin-top: 30px;
+	}
+	#content li{
+       line-height: 30px;
+       padding: 5px;
+       box-sizing: border-box;
+       border: 1px solid #b5b6b7;
+       border-right: none;
+       min-width: 100px;
+       margin-bottom: 30px;
+	}
+	#content li:nth-of-type(9){
+		 border-right: 1px solid #b5b6b7;
+	}
+	#content li:nth-of-type(18){
+		 border-right: 1px solid #b5b6b7;
+	}
+</style>
+</head>
+<body>
+	<div class="submit-container">
+		<ul class="submit-left">
+			<li class="active"><a href="./common.html">常用功能</a></li>
+			<li><a href="./submit.html">论文检测</a></li>
+			<li><a href="./check.html">查看报告</a></li>
+			<li><a href="./account.html">账户</a></li>
+			<li><a href="./pay.html">充值中心</a></li>
+		</ul>
+		<div class="submit-right">
+			<p>论文检测价格</p>
+			<ul id="content">
+				<!-- <li>
+					<div>期刊</div>
+					<div>10元/1篇</div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  var data = {
+  	_token: '856861513a74a719780672107e1e8660',
+    _uid: '831'
+  }
+
+  $.ajax({
+	   type: "POST",
+	   url: "http://api.kuailelunwen.com/supply_price",
+	   data: data,
+	   success: function(data){
+	   	      var res = JSON.parse(data)
+	   	      console.log('res',res)
+	   	      var html = ''
+	   	      for(var i = 0;i<res.length;i++){
+                var template = '<li>'+
+								 '<div>'+res[i].type+'</div>'+
+								 '<div>'+res[i].unit_price+'元/'+res[i].unit_num+res[i].unit+'</div>'+
+							   '</li>'
+			    html += template
+	   	      }
+	   	      $('#content').html(html)
+	      }
+    });
+  
+});
+</script>

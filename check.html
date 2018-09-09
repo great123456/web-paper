@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提交论文</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<script src="./layui/layui.js"></script>
+	<script src="./jquery.js"></script>
+<style>
+    body{
+    	height: 100%;
+    }
+	.submit-container{
+		height: 100%;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.submit-left{
+		width: 130px;
+		height: 100%;
+		background: #343544;
+		text-align: center;
+		padding-top: 50px;
+		box-sizing: border-box;
+	}
+	.submit-left li{
+		height: 50px;
+		line-height: 50px;
+		color: #ffffff;
+		cursor: pointer;
+	}
+	.submit-left li a{
+		color: #ffffff;
+	}
+	.submit-left li.active{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-left li.active a{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-right{
+	  width: 1000px;
+	  padding-top: 50px;
+	  padding-left: 30px;
+	}
+	.check-text{
+		cursor: pointer;
+		color: #56b282;
+	}
+</style>
+</head>
+<body>
+	<div class="submit-container">
+		<ul class="submit-left">
+			<li><a href="./common.html">常用功能</a></li>
+			<li><a href="./submit.html">论文检测</a></li>
+			<li class="active"><a href="./check.html">查看报告</a></li>
+			<li><a href="./account.html">账户</a></li>
+			<li><a href="./pay.html">充值中心</a></li>
+		</ul>
+		<div class="submit-right">
+			<p>检测列表</p>
+			<table class="layui-table">
+			  <colgroup>
+			    <col width="150">
+			    <col width="200">
+			    <col>
+			  </colgroup>
+			  <thead>
+			    <tr>
+			      <th>昵称</th>
+			      <th>检测时间</th>
+			      <th>检测类型</th>
+			      <th>订单号</th>
+			      <th>操作</th>
+			    </tr> 
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>贤心</td>
+			      <td>2018-10-31 12:10</td>
+			      <td>万方</td>
+			      <td>13131216613</td>
+			      <td><span class="check-text">查看</span></td>
+			    </tr>
+			  </tbody>
+			</table>
+			      
+		</div>
+	</div>
+</body>
+</html>
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+  form.on('submit(formDemo)', function(data){
+  	
+  });
+});
+</script>

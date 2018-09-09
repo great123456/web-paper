@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提交论文</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<script src="./layui/layui.js"></script>
+	<script src="./jquery.js"></script>
+<style>
+    body{
+    	height: 100%;
+    }
+	.submit-container{
+		height: 100%;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.submit-left{
+		width: 130px;
+		height: 100%;
+		background: #343544;
+		text-align: center;
+		padding-top: 50px;
+		box-sizing: border-box;
+	}
+	.submit-left li{
+		height: 50px;
+		line-height: 50px;
+		color: #ffffff;
+		cursor: pointer;
+	}
+	.submit-left li a{
+		color: #ffffff;
+	}
+	.submit-left li.active{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-left li.active a{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-right{
+	  width: 1000px;
+	  padding-top: 50px;
+	}
+	.layui-form-label{
+		width: 100px;
+	}
+	.submit-remark{
+		margin-top: 50px;
+		background: #f9f0dd;
+		line-height: 35px;
+		margin-left: 100px;
+		padding:20px;
+	}
+	.layui-textarea{
+		height: 390px;
+	}
+	.form-hint{
+		margin-top: 5px;
+		color: #666;
+	}
+</style>
+</head>
+<body>
+	<div class="submit-container">
+		<ul class="submit-left">
+			<li><a href="./common.html">常用功能</a></li>
+			<li class="active"><a href="./submit.html">论文检测</a></li>
+			<li><a href="./check.html">查看报告</a></li>
+			<li><a href="./account.html">账户</a></li>
+			<li><a href="./pay.html">充值中心</a></li>
+		</ul>
+		<div class="submit-right">
+			<div class="layui-form">
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">论文标题</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" id="title">
+			      <p class="form-hint">(论文标题不少于5个字,不得超过30字)</p>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">论文作者</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="author" required  lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+			      <p class="form-hint">(论文作者不能为空)</p>
+			    </div>
+			  </div>
+			  <!-- <div class="layui-form-item">
+			    <label class="layui-form-label">选择框</label>
+			    <div class="layui-input-block">
+			      <select name="city" lay-verify="required">
+			        <option value=""></option>
+			        <option value="0">北京</option>
+			        <option value="1">上海</option>
+			        <option value="2">广州</option>
+			        <option value="3">深圳</option>
+			        <option value="4">杭州</option>
+			      </select>
+			    </div>
+			  </div> -->
+			  <div class="layui-form-item layui-form-text">
+			    <label class="layui-form-label">论文内容</label>
+			    <div class="layui-input-block">
+			      <textarea name="content" placeholder="请输入论文内容" class="layui-textarea"></textarea>
+			      <p class="form-hint">(内容的长度至少1000字，至多10万字。系统按照Word字数统计里面的字符数(不计空格)计算)</p>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit lay-filter="formDemo">提交检测</button>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="submit-remark">
+				<p>系统在检测时会分析论文的前后文关系， 所以请您提交论文的全部内容，如果是非全文的检测将不能保证检测的准确性。</p>
+				<p>系统仅支持中文论文(包括简体、繁体)的检测，暂不支持英语等非中文论文的检测，请勿提交非中文论文!</p>
+				<p>为了保证互联网检测的准确性，每次检测时我们采用实时全网检测，因此无法保证每次互联网检测的结果相同。</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+  form.on('submit(formDemo)', function(data){
+  	var params = data.field;
+  	var data = {
+  		_token: '856861513a74a719780672107e1e8660',
+  		_uid: '831',
+  		check_type: '1',
+  		paper_title: params.title,
+  		paper_author: params.author,
+  		paper_content: params.content
+  	}
+    $.ajax({
+	   type: "POST",
+	   url: "http://api.kuailelunwen.com/upload_paper",
+	   data: data,
+	   success: function(data){
+	   	      var res = JSON.parse(data)
+	   	      console.log('res',res)
+	          if(res.status == true){
+                 layer.msg('提交成功')
+	          }else{
+	          	 layer.msg(res.info)
+	          }
+	      }
+    });
+  });
+});
+</script>

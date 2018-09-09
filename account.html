@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提交论文</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<script src="./layui/layui.js"></script>
+	<script src="./jquery.js"></script>
+<style>
+    body{
+    	height: 100%;
+    	background: #f9f9f9;
+    }
+	.submit-container{
+		height: 100%;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.submit-left{
+		width: 130px;
+		height: 100%;
+		background: #343544;
+		text-align: center;
+		padding-top: 50px;
+		box-sizing: border-box;
+	}
+	.submit-left li{
+		height: 50px;
+		line-height: 50px;
+		color: #ffffff;
+		cursor: pointer;
+	}
+	.submit-left li a{
+		color: #ffffff;
+	}
+	.submit-left li.active{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-left li.active a{
+		background: #ffffff;
+		color: #56b282;
+	}
+	.submit-right{
+	  width: 1000px;
+	  padding-top: 50px;
+	  padding-left: 30px;
+	}
+	.account-content{
+		background: #ffffff;
+		height: 360px;
+		margin-top: 20px;
+		padding:20px;
+	}
+	.account-option{
+		height: 39px;
+		line-height: 39px;
+		font-size: 20px;
+	}
+	.account-num{
+		color: #56b282;
+	}
+	.login-out{
+		width: 200px;
+		height: 39px;
+		border-radius: 20px;
+		text-align: center;
+		line-height: 39px;
+		color: #ffffff;
+		background: #f0ad4e;
+		margin-top: 60px;
+		cursor: pointer;
+	}
+	.login-out a{
+		color: #ffffff;
+	}
+</style>
+</head>
+<body>
+	<div class="submit-container">
+		<ul class="submit-left">
+			<li><a href="./common.html">常用功能</a></li>
+			<li><a href="./submit.html">论文检测</a></li>
+			<li><a href="./check.html">查看报告</a></li>
+			<li class="active"><a href="./account.html">账户</a></li>
+			<li><a href="./pay.html">充值中心</a></li>
+		</ul>
+		<div class="submit-right">
+			<p>基本信息</p>
+			<div class="account-content">
+				<div class="account-option">
+					<span>用户名:</span>
+					<span>木叶</span>
+				</div>
+				<div class="account-option">
+					<span>账户类型:</span>
+					<span>用户密码登录</span>
+				</div>
+				<div class="account-option">
+					<span>账户余额:</span>
+					<span class="account-num">0</span>
+					<span>元</span>
+				</div>
+				<div class="login-out"><a href="./index.html">退出登录</a></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+  form.on('submit(formDemo)', function(data){
+  	
+  });
+});
+</script>
