@@ -2,7 +2,7 @@
   "name": "",
   "version": "",
   "scripts": {
-    "dev": "http-server -a 0.0.0.0 -p 80"
+    "dev": "http-server -a 0.0.0.0 -p 3000"
   },
   "dependencies": {
     "http-server": "^0.11.1"

@@ -12,18 +12,36 @@
     body{
     	height: 100%;
     }
+    .header-common{
+    	height: 65px;
+    	line-height: 65px;
+    	color: #ffffff;
+    	background: #56b282;
+    	padding: 0px 160px;
+    	box-sizing: border-box;
+    	display: flex;
+    	justify-content: space-between;
+    }
+    .login-btn{
+    	cursor: pointer;
+    	margin-left: 10px;
+    }
+    .login-btn a{
+    	color: #ffffff;
+    }
 	.submit-container{
-		height: 100%;
 		display: flex;
 		justify-content: flex-start;
+		height: auto;
 	}
 	.submit-left{
 		width: 130px;
-		height: 100%;
+		min-width: 90px;
 		background: #343544;
 		text-align: center;
 		padding-top: 50px;
 		box-sizing: border-box;
+		height: 100vh;
 	}
 	.submit-left li{
 		height: 50px;
@@ -43,7 +61,7 @@
 		color: #56b282;
 	}
 	.submit-right{
-	  width: 1000px;
+	  width: 900px;
 	  padding-top: 50px;
 	  padding-left: 30px;
 	}
@@ -59,18 +77,48 @@
        box-sizing: border-box;
        border: 1px solid #b5b6b7;
        border-right: none;
-       min-width: 100px;
+       width: 130px;
        margin-bottom: 30px;
+       text-align: center;
 	}
-	#content li:nth-of-type(9){
+	#content li:nth-of-type(6){
+		 border-right: 1px solid #b5b6b7;
+	}
+	#content li:nth-of-type(12){
 		 border-right: 1px solid #b5b6b7;
 	}
 	#content li:nth-of-type(18){
 		 border-right: 1px solid #b5b6b7;
 	}
+	@media screen and (max-width: 900px) {
+       .header-common{
+       	padding: 0px 30px;
+       }
+       #content li{
+          line-height: 30px;
+          padding: 5px;
+          box-sizing: border-box;
+          border: 1px solid #b5b6b7;
+          border-right: none;
+          width: 100px;
+          margin-bottom: 30px;
+          text-align: center;
+       }
+	}
 </style>
 </head>
 <body>
+	<div class="header-common">
+		<div>
+			快乐论文
+		</div>
+		<div>
+			<span style="margin-right: 10px;">余额:30元</span>
+			<span>浅井木叶</span>
+			<span class="login-btn"><a href="./index.html">退出</a></span>
+		</div>
+	</div>
+
 	<div class="submit-container">
 		<ul class="submit-left">
 			<li class="active"><a href="./common.html">常用功能</a></li>
@@ -105,6 +153,68 @@ layui.use('table', function(){
 	   data: data,
 	   success: function(data){
 	   	      var res = JSON.parse(data)
+	   	      res.forEach(function(item){
+	   	      	item.unit_price = parseFloat(item.unit_price) + 3
+	   	      	switch (item.type) {
+	   	      		case '3':
+	   	      			item.type = '知网 VIP/TMLC2'
+	   	      			break;
+	   	      		case '4':
+	   	      		    item.type = '知网期刊'
+	   	      		    break;
+	   	      		case '5':
+	   	      		     item.type = 'Gocheck'
+	   	      		     break;
+	   	      		case '6':
+	   	      		     item.type = '维普大学生版'
+	   	      		     break;
+	   	      		case '7':
+	   	      		     item.type = 'PaperRight'
+	   	      		     break;
+	   	      		case '8':
+	   	      		     item.type = '知网小论文'
+	   	      		     break;
+	   	      		case '9':
+	   	      		     item.type = '知网 PMLC'
+	   	      		     break;
+	   	      		case '10':
+	   	      		     item.type = 'Turnitin'
+	   	      		     break;
+	   	      		case '11':
+	   	      		      item.type = 'TurnitinUK'
+	   	      		      break;
+	   	      		case  '13':
+	   	      		      item.type = 'PaperYY'
+	   	      		      break;
+	   	      		case  '20':
+	   	      		      item.type = 'Grammarly'
+	   	      		      break;
+	   	      		case  '22':
+	   	      		      item.type = '维普泛语通用版'
+	   	      		      break;
+                    case  '23':
+                           item.type = '维普研究生版'
+                           break;
+                    case  '24':
+                           item.type = '维普职称版'
+                           break;
+                    case  '25':
+                           item.type = '知网期刊大分解'
+                           break;
+                    case   '27':
+                           item.type = '维普编辑部版'
+                           break;
+                    case   '29':
+                           item.type = '万方 2.0 本科'
+                           break;
+                    case   '30':
+                           item.type = '万方 2.0 硕博'
+                           break;
+	   	      		default:
+	   	      			// statements_def
+	   	      			break;
+	   	      	}
+	   	      })
 	   	      console.log('res',res)
 	   	      var html = ''
 	   	      for(var i = 0;i<res.length;i++){

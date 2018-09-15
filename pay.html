@@ -13,6 +13,23 @@
     	height: 100%;
     	background: #f9f9f9;
     }
+    .header-common{
+    	height: 65px;
+    	line-height: 65px;
+    	color: #ffffff;
+    	background: #56b282;
+    	padding: 0px 160px;
+    	box-sizing: border-box;
+    	display: flex;
+    	justify-content: space-between;
+    }
+    .login-btn{
+    	cursor: pointer;
+    	margin-left: 10px;
+    }
+    .login-btn a{
+    	color: #ffffff;
+    }
 	.submit-container{
 		height: 100%;
 		display: flex;
@@ -20,6 +37,7 @@
 	}
 	.submit-left{
 		width: 130px;
+		min-width: 90px;
 		height: 100%;
 		background: #343544;
 		text-align: center;
@@ -93,9 +111,25 @@
 		margin-left: 30px;
 		cursor: pointer;
 	}
+	@media screen and (max-width: 900px) {
+       .header-common{
+       	padding: 0px 30px;
+       }
+	}
 </style>
 </head>
 <body>
+	<div class="header-common">
+		<div>
+			快乐论文
+		</div>
+		<div>
+			<span style="margin-right: 10px;">余额:30元</span>
+			<span>浅井木叶</span>
+			<span class="login-btn"><a href="./index.html">退出</a></span>
+		</div>
+	</div>
+
 	<div class="submit-container">
 		<ul class="submit-left">
 			<li><a href="./common.html">常用功能</a></li>
