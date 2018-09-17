@@ -63,6 +63,7 @@
 	  width: 1000px;
 	  padding-top: 50px;
 	  padding-bottom: 100px;
+	  height: 100vh;
 	}
 	.layui-form-label{
 		width: 100px;
@@ -104,8 +105,8 @@
 		<ul class="submit-left">
 			<li><a href="./index.html">首页</a></li>
 			<li><a href="./common.html">常用功能</a></li>
-			<li class="active"><a href="./submit.html">论文检测</a></li>
-			<li><a href="./fee.html">人工降重</a></li>
+			<li><a href="./submit.html">论文检测</a></li>
+			<li class="active"><a href="./fee.html">人工降重</a></li>
 			<li><a href="./check.html">查看报告</a></li>
 			<li><a href="./account.html">账户</a></li>
 			<li><a href="./pay.html">充值中心</a></li>
@@ -127,13 +128,13 @@
 			    </div>
 			  </div>
 			  <div class="layui-form-item">
-			      <label class="layui-form-label">监测类型</label>
+			      <label class="layui-form-label">降重类型</label>
 			      <div class="layui-input-block">
 			        <select name="city" lay-verify="required">
 			          <option value=""></option>
-			          <option value="0">万方</option>
-			          <option value="1">维普</option>
-			          <option value="2">知网</option>
+			          <option value="0">期刊</option>
+			          <option value="1">论文</option>
+			          <option value="2">报告</option>
 			        </select>
 			      </div>
 			   </div>
@@ -156,22 +157,15 @@
 			      <div>
 			      	<input type="file" style="margin-bottom: 20px;">
 			      </div>
-			      <textarea name="content" placeholder="请输入论文内容" class="layui-textarea"></textarea>
-			      <p class="form-hint">(内容的长度至少1000字，至多10万字。系统按照Word字数统计里面的字符数(不计空格)计算)</p>
 			    </div>
 			  </div>
 			  <div class="layui-form-item">
 			    <div class="layui-input-block">
-			      <button class="layui-btn" lay-submit lay-filter="formDemo">提交检测</button>
+			      <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
 			    </div>
 			  </div>
 			</div>
 
-			<div class="submit-remark">
-				<p>系统在检测时会分析论文的前后文关系， 所以请您提交论文的全部内容，如果是非全文的检测将不能保证检测的准确性。</p>
-				<p>系统仅支持中文论文(包括简体、繁体)的检测，暂不支持英语等非中文论文的检测，请勿提交非中文论文!</p>
-				<p>为了保证互联网检测的准确性，每次检测时我们采用实时全网检测，因此无法保证每次互联网检测的结果相同。</p>
-			</div>
 		</div>
 	</div>
 </body>
