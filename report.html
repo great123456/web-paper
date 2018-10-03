@@ -30,10 +30,12 @@
     .index-header a{
     	color: #ffffff;
     }
+    .report-contaienr{
+    	background: #f5f5f5;
+    	min-height: 100vh;
+    }
     .query-container{
     	width: 100%;
-    	background: #f5f5f5;
-    	height: 500px;
     	text-align: center;
     	padding-top: 100px;
     }
@@ -53,18 +55,14 @@
       background: #f06541;
       cursor: pointer;
     }
-    .query-bottom{
-    	width: 100%;
-    	background: #626376;
-    	color: #ffffff;
-    	padding-top: 30px;
-    	padding-bottom: 90px;
-    	padding-left: 15%;
-    	padding-right: 20%;
-    	font-size: 15px;
+    .report-put{
+    	margin-top: 20px;
     }
-    .query-bottom p{
-    	margin-bottom: 10px;
+    .report-put input{
+    	height: 35px;
+    	line-height: 35px;
+    	text-indent: 10px;
+    	width: 260px;
     }
     .query-service{
     	width: 52px;
@@ -84,30 +82,27 @@
 </style>
 </head>
 <body>
-
+  
+  <div class="report-contaienr">
    <div class="index-header">
    	 <ul>
    		<li><a href="index.html">首页</a></li>
-   		<li class="active-li"><a href="./query.html">查询真伪</a></li>
-      <li><a href="./common.html">常用功能</a></li>
-      <li><a href="./submit.html">论文监测</a></li>
-      <li><a href="./report.html">查看报告</a></li>
+   		<li><a href="./query.html">查询真伪</a></li>
+   		<li><a href="./common.html">常用功能</a></li>
+		<li><a href="./submit.html">论文监测</a></li>
+   		<li class="active-li"><a href="./report.html">查看报告</a></li>
    		<li><a href="./help.html">帮助</a></li>
    	 </ul>
    </div>
    
    <div class="query-container">
-   	 <p class="query-title">监测报告真伪查询</p>
+   	 <p class="query-title">查看并下载报告</p>
+   	 <div class="report-put">
+   	 	<input type="text" placeholder="请输入淘宝订单号进行查询">
+   	 </div>
    	 <div class="query-btn">开始查询</div>
    </div>
-
-   <div class="query-bottom">
-   	<p>如何识别假冒的检测报告？</p>
-   	<p>一：	比对库资源只有网络资源的均为假货，正品检测报告都是经过大数据量的本地库（9000万篇学术期刊和学位论文）详细比对生成，检测结果有详细的期刊和学位论文出处。假的检测报告用只有网络资源的检测报告坑害消费者，导致其论文最终没有通过审核。</p>
-   	<p>二：	不支持官网真伪验证（http://www.paperpass.com/check）的均为假货。</p>
-   	<p>三：	请认准PaperPass这个名称，有的山寨检测报告用以Paper开头的其他名称迷惑消费者。</p>
-   	<p>真诚希望您能够将此信息转告您的朋友和同学，以防被骗！</p>
-   </div>
+  </div>
 
    <div class="query-service">
    	 <span>在线客服</span>
